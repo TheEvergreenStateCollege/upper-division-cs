@@ -1,6 +1,7 @@
 package dev.codewithfriends;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
@@ -24,5 +25,13 @@ public class AppTest
         for(int i = 0; i < testArray.length; i++){
             assertEquals(Integer.valueOf(i),  Integer.valueOf(result[i]));
         }
+    }
+
+    public void testMergeSort(){
+        int[] theArray = {9,6,12,23,78,1};
+        int[] theResult = App.mergeSort(theArray);
+        int[] expected = {1,6,9,12,23,78};
+        assertArrayEquals(expected, theResult);
+        assertArrayEquals(theResult, expected);
     }
 }
