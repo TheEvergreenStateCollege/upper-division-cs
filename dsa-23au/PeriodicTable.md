@@ -5,7 +5,7 @@
 | From size n, afterwards...  | size increases to n+1 || size stays the same at `n`   ||||| size stays the same at `n`         | size decreases to `n-1`      |
 |                     | insertAt(i,v) | insertLast(v) | size() | isEmpty() | searchFor(v) | min() | max()    | replaceAt(i,v) | removeAt(i) |
 | Arrays              | [O(?)](#arrays-insert-at)          |               |        |           |              |       |          |                |             |
-| Linked lists        | [O(1)](#Linked-lists-insert-at)              |  [O(1)](#Linked-lists-insert-at)             |        |           |              |       |          |                |             |
+| Linked lists        | [O(1)](#Linked-lists-insert-at)              |  [O(1)](#Linked-lists-insert-at)             |        |           |[O(1)](#arrays-search-for)|       |          |                |             |
 | Stacks              | [O(1)](#stacks-insert-at)             |               |        |           |              |       |          |                |             |
 | Queues              |               |               |        |           |              |       |          |                |             |
 | Heaps               |               |               |        |           |              |       |          |                |             |
