@@ -15,7 +15,7 @@ FUNCTION nonDivisibleSubset(k, s):
     FOR i FROM 1 TO k / 2:
         result += maximum of remainderCount[i] and remainderCount[k - i]
 
-    // Step 5: Return the result
+    // Step 5: Return the result //change 
     RETURN result
 
 // Main function to read input and call the nonDivisibleSubset function
