@@ -35,6 +35,16 @@
         {
             "type": "java",
             "name": "App",
+<<<<<<< Updated upstream
+=======
+            "request": "launch",
+            "mainClass": "dev.codewithfriends.App",
+            "projectName": "sorting"
+        },
+        {
+            "type": "java",
+            "name": "ndeanon25",
+>>>>>>> Stashed changes
             "request": "launch",
             "mainClass": "com.juniperGMVAD.app.App",
             "projectName": "juniper-app"

@@ -53,7 +53,10 @@ public class BinarySearchTreeTest
         assertEquals(Integer.valueOf(4), visited.get(4));
     }
 
+<<<<<<< HEAD
     @Test
+=======
+>>>>>>> 46ed45751fe022126556898b93f052add9f6aec3
     public void testDFSDiagram()
     {
         BinarySearchTree<Integer> bst = new BinarySearchTree<>();
@@ -74,5 +77,8 @@ public class BinarySearchTreeTest
         }
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 46ed45751fe022126556898b93f052add9f6aec3
 }
