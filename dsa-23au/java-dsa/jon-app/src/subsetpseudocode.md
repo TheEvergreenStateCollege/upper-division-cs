@@ -1,31 +1,36 @@
-FUNCTION nonDivisibleSubset(k, s):
-    // Step 1: Create an array to keep track of remainders
-    remainderCount = new Array of Integers of size k, initialized to 0
+FUNCTION divisibleSubsetSize(k, s):
+    // Step 1: Create an array to track the count of remainders
+    remainderCount = Array of Zeros with size k
 
-    // Step 2: Count Remainders
-    FOR each num IN s:
-        remainderCount[num % k]++
+   // Step 2: Count the remainders in the array
+    FOR i FROM 0 TO size(s) - 1:
+        remainderCount[s[i] % k] += 1
 
-    // Step 3: Handle special case (when k is even)
-    IF k is even THEN
-        remainderCount[k / 2] = 1
+    // Step 3: Initialize the result as the count of numbers divisible by k
+    result = remainderCount[0]
 
-    // Step 4: Calculate the result
-    result = minimum of remainderCount[0] and 1
+    // Step 4: Calculate the size of the divisible subset
     FOR i FROM 1 TO k / 2:
-        result += maximum of remainderCount[i] and remainderCount[k - i]
+        result += Maximum of remainderCount[i] and remainderCount[k - i]
+
 
     // Step 5: Return the result
     RETURN result
 
-// Main function to read input and call the nonDivisibleSubset function
 FUNCTION main():
-    firstMultipleInput = READ a line from input, split by space
-    n = PARSE INT from firstMultipleInput[0]
-    k = PARSE INT from firstMultipleInput[1]
+    // Step 1: Read input values
+    PRINT "Enter the value of k:"
+    READ k
 
-    s = READ a line from input, split by space, and convert to a list of integers
+    PRINT "Enter the array of integers (space-separated):"
+    READ inputArray
 
-    result = CALL nonDivisibleSubset(k, s)
+    // Convert the input string to an array of integers
+    s = CONVERT_STRING_TO_ARRAY(inputArray)
 
-    WRITE result to output
+    // Step 2: Call the divisibleSubsetSize function
+    subsetSize = divisibleSubsetSize(k, s)
+
+    // Step 3: Display the result
+    PRINT "The size of the smallest divisible subset is:", subsetSize
+END FUNCTION
