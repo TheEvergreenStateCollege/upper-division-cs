@@ -62,4 +62,7 @@ ENV PATH=/opt/apache-maven-3.9.4/bin:/opt/graalvm-community-openjdk-20.0.2+9.1/b
 RUN mkdir ~/src
 RUN cd ~/src; git clone https://github.com/TheEvergreenStateCollege/upper-division-cs
 
+# We add these layers at the end as much as possible to reuse previous build cache
+ADD ./config/yggdrasil.conf /etc/yggdrasil/yggdrasil.conf
+
 WORKDIR "${HOME}"
