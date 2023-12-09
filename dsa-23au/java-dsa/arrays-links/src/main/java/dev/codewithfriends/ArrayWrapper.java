@@ -169,15 +169,43 @@ public class ArrayWrapper<T> implements List<T> {
     }
 
     @Override
-    public T set(int index, T element) {
-        return null;
+    public T set(int index, T newVal) {
+
+        if (index < 0 || index >= _array.length){
+            throw new IndexOutOfBoundsException("IooR");
+        }
+        T oldVal = _array[index];
+        _array[index] = newVal;
+        return oldVal;
     }
+
 
     @Override
-    public void add(int index, T element) {
+    public void add(int insertPoint, T newVal) {
+
+        @SuppressWarnings("unchecked")
+        T[] newArr = (T[]) new Object[_array.length + 1];
+
+        
+        if (insertPoint < 0 || insertPoint >= _array.length){
+            throw new IndexOutOfBoundsException("IooR");
+        }
+        
+        for (int i = 0; i <= _array.length; i++){
+            if (i != insertPoint) {
+                if (i<insertPoint){
+                    newArr[i] = _array[i];
+                }
+                else {
+                    newArr[i] = _array[i-1];
+                }
+            }
+            else if (i == insertPoint){
+                newArr[i] = newVal;
+            }
+        }
 
     }
-
     // TODO: check if currentSize is less than half maxSize, resize array
     // Returns null if index is out of bounds of used array indices
     @Override
@@ -202,7 +230,13 @@ public class ArrayWrapper<T> implements List<T> {
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        for (int i = 0 ; i < _array.length; i++){
+            if (_array[i].equals(o)) {
+                return i;
+            }
+        }
+        // return -1 if no match found
+        return -1;
     }
 
     @Override
