@@ -45,5 +45,15 @@ Looking back through my notes. Ah what fun!
 2. Being proactive seems to be important in the job market. Especially the programmer job market. 
 2. I like how many of the basic data strucures have a name that visually describes them A stack is like a *stack* of playing cards. An organised pile. Queues are like a reverse stack, and fucntion, well... like a queue. Heaps are a pile etc etc. 
 4. the flowchart in Cracking the Coding Interview was fun. I like explanations that include a visual aid. 
-5. Specifically, the point on the map "Be confident (not cocky)" is such an important point. lots of people may have extraordinary skills, but if they are fundamentally difficult to be around, they arent usefull in a team setting. 
+5. Specifically, the point on the map "Be confident (not cocky)" is such an important point. lots of people may have extraordinary skills, but if they are fundamentally difficult to be around, they arent usefull in a team setting.
+6. 
+
+Lucretian: 
+
+-CRUD = create, read, update, delete
+-Using gitpod was still causing me lots of trouble.
+-Hash maps can have collisions, but there are ways to deal with it. 
+-Listening is the first step in solving problems, and data structures can be linked or continuous, each with its own pros and cons. 
+-The dictionary data type is there for quick access to data items, and it's essential to know about different data structures for coding interviews .
+
 
