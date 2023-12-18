@@ -1,0 +1,83 @@
+package main.com.devincompany.app;
+import java.util.concurrent.DelayQueue;
+import java.util.ArrayList;
+public class TwoTieredArray<obj>
+{
+    private int size;
+    private int subSize;
+    ArrayList<Deque> twoTieredArray = new ArrayList<Deque>();
+
+    public TwoTieredArray()
+    {
+        this.size = 0;
+        this.subSize = 0;
+    }
+
+    public void insert(int element, int index) 
+    {
+        int newSize = size + 1;
+        if (Math.ceil(Math.sqrt(newSize)) > (int) Math.ceil(Math.sqrt(size))) {
+            this.size += 1;
+            expand(index);
+        } else {
+            this.size += 1;
+        }
+        Deque tempDeque = new Deque(subSize + 1);
+        if (this.twoTieredArray.get(0).isEmpty()) 
+        {
+            this.twoTieredArray.get(0).insertrear(element);
+        } else {
+            for (int i = subSize; i >= (index % this.subSize); i--) 
+            {
+                tempDeque.insertfront(twoTieredArray.get((int) Math.ceil((double) index / (double) this.subSize)).getRear());
+                twoTieredArray.get((int) Math.ceil((double) index / (double) this.subSize)).deleterear();
+            }
+            tempDeque.insertfront(element);
+            for (int i = subSize; i >= (index % this.subSize); i--) 
+            {
+                this.twoTieredArray.get((int) Math.ceil((double) index / (double) this.subSize)).insertrear(tempDeque.getFront());
+                tempDeque.deletefront();
+            }
+            for (int i = index / subSize; i < this.subSize - 1; i++) 
+            {
+                this.twoTieredArray.get(i + 1).insertfront(twoTieredArray.get(i).getRear());
+            }
+    }
+    }
+    public int getSize()
+    {
+        return this.size;
+    }
+    public int get(int index)
+    {
+        return this.twoTieredArray.get((index / subSize)).getIndex((index % subSize));
+    }
+    public void delete()
+    {
+
+    }
+    public void expand(int index) {
+        this.twoTieredArray.add(new Deque(subSize + 1));
+        int k = 0;
+        for (int i = 0; i < this.subSize; i++) 
+        {
+            this.twoTieredArray.get(i).resize(subSize + 1);
+            for (int j = 0; j < k && (i - 1) >= 0; j++) 
+            {
+                this.twoTieredArray.get(i - 1).insertrear(twoTieredArray.get(i).getFront());
+                twoTieredArray.get(i).deletefront();
+            }
+            if (i > 0) {
+                this.twoTieredArray.get(i - 1).insertrear(twoTieredArray.get(i).getFront());
+                twoTieredArray.get(i).deletefront();
+            }
+        k++;
+        }
+        this.subSize++;
+    }
+    public void compress()
+    {
+
+    }
+
+}
