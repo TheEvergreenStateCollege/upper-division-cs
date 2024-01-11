@@ -34,6 +34,17 @@ If you wish, you can change the theme to something other than bright white.
 
 <img width="567" alt="image" src="https://github.com/TheEvergreenStateCollege/upper-division-cs/assets/148553/8dfdb862-959b-4e98-81c4-9537b9b1fa25">
 
+## Remote Development
+
+On the class server `anti-villain`.
+
+Use JetBrains Gateway to SSH into a remote machine.
+
+<img width="801" alt="image" src="https://github.com/TheEvergreenStateCollege/upper-division-cs/assets/148553/0233eae2-7950-4c70-9a88-4917277d8872">
+
+<img width="728" alt="image" src="https://github.com/TheEvergreenStateCollege/upper-division-cs/assets/148553/e1f9976b-5918-4ccf-976d-1a69137db907">
+
+
 ## Troubleshooting
 
 ### Linting and Building
