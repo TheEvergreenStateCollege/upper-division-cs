@@ -1,0 +1,103 @@
+body {
+    background-color: #2a2c38;
+  }
+
+
+
+/*************************/
+/*    Styling  Header    */
+/*************************/
+header{
+     
+    overflow: hidden;
+}
+ 
+#top-header{
+         
+    text-align: center;
+    height: 60px;
+}
+ 
+/****************/   
+/* Styling Logo */
+/****************/
+#logo{
+    float: left;
+    padding: none;
+    margin: none;
+    height: 60px;
+    width: 30%;
+}
+ 
+#logo img{
+    width: 60%;
+    float: left;
+    padding: 10px 0px;
+}    
+ 
+/*****************************/
+/* Styling Header Image Menu */
+/*****************************/
+#header-image-menu{
+    top: 10px;
+    position: relative;
+}
+ 
+#header-image-menu img{
+    width: 100%;
+    margin: none;
+    padding: none;
+}
+ 
+#image-text{
+    position: absolute;
+    top: 60%;
+    left: 60%;
+    font-family: 'Roboto';
+    color: #000;
+    transform: translate(-30%, -30%);
+    text-align: center;
+}
+
+/***************************/
+/* Styling Navigation Menu */
+/***************************/
+nav{
+    float: right;
+    width: 70%;
+    height: 100%;
+    margin: none;
+}
+     
+nav ul{
+    text-align: center;
+    float: right;
+    margin: none;
+    background: #6ea8d7;
+}
+     
+nav li{
+    display: inline-block;
+    padding: none;
+    margin: none;
+}
+     
+nav li a, nav li span{
+    display: inline-block;
+    padding: 0em 1.5em;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 60px;
+}
+     
+nav li a{
+    color: #FFF;
+}
+     
+nav li:hover a, nav li span{
+    background: #6ea8d7;
+    color: #6ea8d7;
+    border-left: 1px solid #6ea8d7;
+    text-decoration: none;
+}
