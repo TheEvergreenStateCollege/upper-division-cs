@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<HTML>
+	<head>
+		<!--<link rel = "stylesheet" href = "styles.css">-->
+	</head>
+	<body>
+		
+
+		<div class = "pane-container">
+
+			<div class = "left-pane">
+					<h1 style = "display:flex; justify-content:center;">Mood Music</h1>	
+					<h2>Add Song:</h2>
+					<label for = "nameInput">Song Name:</label><br>	
+					<input type = "text" name = "name"></input><br>
+					<label for = "URLInput">URL:</label><br>
+					<input type = "text" name = "URL"></input><br>
+					<label for = "tagInput">Tag:</label><br>
+					<input type = "text" name = "tag"></input><br>
+					<button class = "addSongButton">Submit</button><br>
+				
+			</div>
+	
+			<div class = "middle-pane">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/nRe3xFeyhVY?si=SwBQSm84phtixDj5&amp;start=5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+			
+			</div>
+
+			<div class = "right-pane">
+				<h2>Songs:</h2>
+				<ul class = "songs-list">
+				</ul>
+
+				<div class = "tags-list">
+				</div>
+			</div>
+		</div>
+		<script type= "text/javascript" src= "script.js"></script>
+		<script type = "module"> 
+		//import {PrismaClient} from '@prisma/client'
+		//const prisma = new PrismaClient()	
+
+		document.addEventListener("DOMContentLoaded", function() {
+        		const tags = [];
+			
+			const submitButton = document.querySelector(".addSongButton")
+        		const songsList = document.querySelector(".songs-list")
+			const tagsList = document.querySelector(".tags-list")
+
+        		submitButton.addEventListener("click", async function() {
+            			const nameInput = document.querySelector("input[name='name']")
+            			const URLInput = document.querySelector("input[name='URL']")
+            			const tagInput = document.querySelector("input[name='tag']")
+					
+				//append song to list
+            			const newSong = document.createElement("li")
+            			newSong.textContent = ` ${nameInput.value}, ${URLInput.value}, ${tagInput.value}`;
+            			songsList.appendChild(newSong)
+
+				//add song to DB
+				await fetch('/createsong', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						name: nameInput.value,
+						URL: URLInput.value,
+						tag: tagInput.value
+					})
+				})
+				/*
+				//add tag if there isn't one
+				const numOfTagMatches = await prisma.songs.count({
+					where: {
+						tag: tagInput.value
+					}
+				})
+					if (numOfTagMatches > 0) {
+					//append
+					const newTag = document.createElement("button")
+					newTag.innerText = tagInput.value
+					tagsList.appendChild(newTag)
+				}
+				*/
+			})
+						
+    		})
+		</script>
+		<script>
+		
+		</script>
+		<!--<script>	
+			const submitButton = document.querySelector(".addSongButton")
+			const songsList = document.querySelector(".songs-list")
+			addSongButton.addEventListener("click", function(){
+				const newSong = document.createElement("li")
+				newSong.textContent = "test"
+				songsList.appendChild(newSong)
+			})
+
+
+		
+		</script>-->
+	</body>
+</HTML>
