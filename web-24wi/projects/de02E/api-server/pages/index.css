@@ -1,0 +1,102 @@
+@keyframes moveIt {
+	0% {background-position: bottom right;}
+	50% {background-position: top left;}
+	100% {background-position: bottom right;}
+}
+@keyframes moveIt2 {
+	0% {background-position: bottom;}
+	50% {background-position: top;}
+	100% {background-position: bottom;}
+}
+@keyframes rotateIt1 {
+	0% {rotate: 0deg; width: 150px;}
+	50% {rotate: 180deg; width: 200px;}
+	100% {rotate: 0deg; width: 150px;}
+}
+@keyframes rotateIt2 {
+	0% {rotate: 0deg; width: 150px;}
+	50% {rotate: -180deg; width: 200px;}
+	100% {rotate: 0deg; width: 150px;}
+}
+body {
+	background-color: rgb(163, 133, 133);
+	background-image: url(../images/stars.jpeg);
+	background-size: 20%;
+	animation: moveIt 15s ease-in-out infinite;
+}
+.floatingstar1 {
+	position: absolute;
+	width: 150px;
+	left: 20%;
+	top: 70%;
+	animation: rotateIt1 8s ease-in-out infinite;
+}
+.floatingstar2 {
+	position: absolute;
+	width: 150px;
+	left: 60%;
+	top: 55%;
+	animation: rotateIt1 14s ease-in-out infinite;
+}
+.floatingstar3 {
+	position: absolute;
+	width: 150px;
+	left: 80%;
+	top: 25%;
+	animation: rotateIt2 9s ease-in-out infinite;
+}
+.floatingstar4 {
+	position: absolute;
+	width: 150px;
+	left: 20%;
+	top: 25%;
+	animation: rotateIt1 12s ease-in-out infinite;
+}
+.floatingstar5 {
+	position: absolute;
+	width: 150px;
+	left: 60%;
+	top: 15%;
+	animation: rotateIt2 7s ease-in-out infinite;
+}
+@font-face {
+	font-family: 'TrattatelloManual';
+	src: url('../fonts/Trattatello/Trattatello.eot');
+	src: url('../fonts/Trattatello/Trattatello.eot') format('embedded-opentype'), 
+		 url('../fonts/Trattatello/Trattatello.woff') format('woff'),
+		 url('../fonts/Trattatello/Trattatello.ttf') format('truetype'),
+		 url('../fonts/Trattatello/Trattatello.svg') format('svg');
+}
+
+.text1 {
+	background-image: url("../images/fire.jpg");
+	background-size: 15%;
+	padding: 20px;
+	margin: -20px;
+	background-position-y: top;
+	background-position: center top;
+	background-clip: text;
+	-webkit-background-clip: text;
+	margin: auto;
+	color: transparent;
+	-webkit-text-stroke: 3px;
+	-webkit-text-stroke-color: rgb(136, 136, 136);
+	text-align: center;
+	width: 80%;
+	left: 8.5%;
+	top: 5%;
+	position: absolute;
+	font-size: 120px;
+	line-height: 115px;
+	font-style: italic;
+	font-family: "TrattatelloManual", fantasy;
+	animation: moveIt2 10s ease-in-out infinite;
+}
+.text2 {
+	font-size: 50px;
+	margin: auto;
+	text-align: center;
+	width: 99%;
+	top: 50%;
+	position: absolute;
+}

@@ -1,0 +1,88 @@
+body {
+    background-color: black;
+    background-image: url(../images/orange.jpeg);
+    background-size: cover;
+}
+.title {
+    left: 50%;
+    top: 15%;
+    -webkit-transform: translate(-50%,-20%);
+    transform: translate(-50%,-20%);
+    position: absolute;
+    color: rgb(190, 73, 0);
+	font-family: "TrattatelloManual", fantasy;
+    font-size: 80px;
+}
+.date {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 50%;
+    height: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+	font-family: "TrattatelloManual", fantasy;
+    color: white;
+}
+.date-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+	font-family: "TrattatelloManual", fantasy;
+    color: white;
+}
+.backdrop {
+    mix-blend-mode: multiply;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 50%;
+    height: 50%;
+    background-color: rgb(80, 80, 80);
+    opacity: 0.5;
+	font-family: "TrattatelloManual", fantasy;
+}
+
+.centered1 {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    text-align: center;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+	font-family: "TrattatelloManual", fantasy;
+    font-size: 30px;
+}
+.centered2 {
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    text-align: center;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+	font-family: "TrattatelloManual", fantasy;
+    font-size: 20px;
+}
+.backdrop-outline {
+
+    outline: 5px solid rgb(255, 119, 0);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 50%;
+    height: 50%;
+}
+.submit-button {
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    text-align: center;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}

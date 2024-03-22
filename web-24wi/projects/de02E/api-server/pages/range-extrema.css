@@ -1,0 +1,21 @@
+@keyframes pulsateIt {
+	0% 
+    {
+        background-size: 183px;
+        background-position: bottom;
+    }
+	50% 
+    {
+        background-size: 210px;
+        background-position: top;
+    }
+    100%
+    {
+        background-size: 183px;
+        background-position: bottom;
+    }
+}
+body {
+    background-image: url(../images/friend.png);
+	animation: pulsateIt 120s ease-in-out infinite;
+}

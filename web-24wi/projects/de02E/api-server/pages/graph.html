@@ -1,0 +1,11 @@
+<h1>Hello Plot</h1>
+<div id="myplot"></div>
+<script type="module">
+    import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
+    const data = await fetch("https://8000-theevergree-upperdivisi-t779ynseouh.ws-us108.gitpod.io/randomGraph");
+    const json = await data.json();
+    console.log(JSON.stringify(json));
+    const plot = Plot.barY(json.results, {x: "day", y: "stepCount"}).plot();
+    const div = document.querySelector("#myplot");
+    div.append(plot);
+</script>
