@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	</head>	
+
+	<body>
+		<h1>Sign in:</h1>
+		<form class ="loginForm">
+			
+			<label for = "usernameInput">Username</label><br>
+			<input type = "text" class = "inputUser" name = "username" required></input><br>
+			
+			<label for = "passwordInput">Password </label><br>
+			<input type = "text" class = "inputPass" name = "password" required></input><br>
+
+			<input type = "submit" class = "submitButton"></input>
+		</form>
+		
+		<h1>Sign up:</h1>
+		<form class ="newUserForm">
+			<label for = "usernameInputNew">Username</label><br>
+			<input type = "text" class = "inputUserNew" name = "username" required></input><br>
+			<label for = "passwordInputNew">Password</label><br>
+			<input type = "text" class = "inputPassNew" name = "password" required></input><br>
+			<input type = "submit" class = "submitButtonNew"></input>
+		</form>
+		
+
+	
+		<script>
+			const newUserForm = document.querySelector(".newUserForm")
+			newUserForm.addEventListener("submit", async function(event) {
+				event.preventDefault() //prevent form request
+				
+				const formData = new FormData(this)
+				const response = await fetch("/signup", {
+					method: "POST",
+					body: formData					
+				})
+				const data = await response.json()
+			})
+			
+				
+			const loginForm = document.querySelector(".loginForm")
+			loginForm.addEventListener("submit", function() {
+				const token = await fetch("/signin", {
+					method: "POST"
+				})
+			})	
+			
+		</script>
+			
+		<!--
+		<script type = "module">
+			const newUsername = document.querySelector("inputUserNew")
+			const newPassword = document.querySelector("inputPassNew")
+
+			const newUserBtn = document.querySelector("submitButtonNew")
+			signinBtn.addEventListener("click", function() {
+				const response = await fetch("/signup", {
+					method: "POST",
+					body: JSON.stringify({
+						"username": newUsername.value,
+						"password": newPassword.value
+					}
+				})
+
+			})
+
+		
+		
+		<script type="module">
+			import bcrypt from "bcrypt"
+			//demo code:
+			//createNewUser
+			const userNameInput = document.querySelector(".inputUser")
+			const passwordInput = document.querySelector(".inputPass")
+
+			const submitButton = document.querySelector(".loginForm")
+			submitButton.addEventListener("submit", fetch("/signup", {
+				method: 'POST',
+				body: JSON.stringify ({
+					"username": userNameInput.value,
+					"password": passwordInput.value
+				})
+			}))
+		
+
+		</script>-->
+	</body>
+
+
+</html>

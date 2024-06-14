@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	
+	<body>
+		<h1>Profile:</h1>
+		<p>created at:</p>
+		<p>username:</p>
+		<button>reset password</button>
+	</body>
+
+	<script type = "text/javascript">
+		async fetchProfileData(token) {
+			 const response = await fetch("/api/profile",
+                         {
+                                "method": "GET",
+                                "headers": `Bearer ${token}`
+                         }
+                	 );
+		}
+		
+	</script>
+</html>
