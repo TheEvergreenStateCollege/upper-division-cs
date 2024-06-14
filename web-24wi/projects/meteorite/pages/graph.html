@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<h1>Hello Plot</h1>
+<div id="myplot"></div>
+<script type="module">
+// Adapted from https://observablehq.com/plot/marks/bar
+import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
+
+const data = await fetch("https://musical-space-eureka-pxggggwgpg4c6rr5-5000.app.github.dev/randomGraph");
+const json = await data.json();
+console.log(JSON.stringify(json));
+const plot = Plot.barY(json.results, {x: "day", y:"stepCount"}).plot();
+const div = document.querySelector("#myplot");
+div.append(plot);
+
+</script>
