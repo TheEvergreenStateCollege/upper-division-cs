@@ -1,6 +1,9 @@
 mod utils;
-
 use wasm_bindgen::prelude::*;
+
+
+
+
 
 #[wasm_bindgen]
 #[repr(u8)]
@@ -17,9 +20,28 @@ pub struct Universe {
     cells: Vec<Cell>,
 }
 
+extern crate web_sys;
+use web_sys::console;
+
+pub struct Timer<'a> {
+    name: &'a str,
+}
+impl<'a> Timer<'a> {
+    pub fn new(name: &'a str) -> Timer<'a> {
+        console::time_with_label(name);
+        Timer { name }
+    }
+}
+
+impl<'a> Drop for Timer<'a> {
+    fn drop(&mut self) {
+        console::time_end_with_label(self.name);
+    }
+}
+
+
 #[wasm_bindgen]
 impl Universe {
-    
     //return a pointer of the index, following the formula: row * width + column
     fn get_index(&self, row: u32, column: u32) -> usize {
         (row * self.width + column) as usize
@@ -42,15 +64,65 @@ impl Universe {
         }
         count
     }
-
+    
     pub fn tick(&mut self) {
-        let mut next = self.cells.clone();
+        let _timer = Timer::new("Universe::tick");
+        
+        let mut next = {
+            //let _timer = Timer::new("allocate next cells");
+            self.cells.clone()
+        };
 
+        {
+            //let _timer = Timer::new("new generation");
+            for row in 0..self.height {
+                for col in 0..self.width {
+                    let idx = self.get_index(row, col);
+                    let cell = self.cells[idx];
+                    let live_neighbors = self.live_neighbor_count(row, col);
+
+                    let next_cell = match (cell, live_neighbors) {
+                        //Rule 1:
+                        (Cell::Alive, x) if x < 2 => Cell::Dead,
+                        //Rule 2:
+                        (Cell::Alive, 2) | (Cell::Alive, 3) => Cell::Alive,
+                        //Rule 3:
+                        (Cell::Alive, x) if x > 3 => Cell::Dead,
+                        //Rule 4:
+                        (Cell::Dead, 3) => Cell::Alive,
+                        //all other cells remain in same state
+                        (otherwise, _) => otherwise,
+                    };
+
+                    next[idx] = next_cell;
+                }
+            }
+        }
+        
+        //let _timer = Timer::new("free old cells");
+        self.cells = next;
+
+        macro_rules! log {
+            ( $( $t:tt )* ) => {
+                web_sys::console::log_1(&format!( $( $t )* ).into());
+            }
+        }
+
+        let mut next = self.cells.clone();
+        
         for row in 0..self.height {
             for col in 0..self.width {
                 let idx = self.get_index(row, col);
                 let cell = self.cells[idx];
                 let live_neighbors = self.live_neighbor_count(row, col);
+
+                log!(
+                    "cell[{}, {}] is initially {:?} and has {} live neighbors",
+                    row,
+                    col,
+                    cell,
+                    live_neighbors
+                );
 
                 let next_cell = match (cell, live_neighbors) {
                     //Rule 1:
@@ -65,6 +137,8 @@ impl Universe {
                     (otherwise, _) => otherwise,
                 };
 
+                log!("  it becomes {:?}", next_cell);
+
                 next[idx] = next_cell;
             }
         }
@@ -72,6 +146,7 @@ impl Universe {
     }
 
     pub fn new() -> Universe {
+        utils::set_panic_hook();
         let width = 64;
         let height = 64;
 
@@ -94,6 +169,36 @@ impl Universe {
 
     pub fn render(&self) -> String {
         self.to_string()
+    }
+
+    pub fn set_width(&mut self, width: u32) {
+        self.width = width;
+        self.cells = (0..width * self.height).map(|_i| Cell::Dead).collect();
+    }
+
+    pub fn set_height(&mut self, height: u32) {
+        self.height = height;
+        self.cells = (0..self.width * height).map(|_i| Cell::Dead).collect();
+    }
+
+    pub fn toggle_cell(&mut self, row: u32, column: u32) {
+        let idx = self.get_index(row, column);
+        self.cells[idx].toggle();
+    }
+}
+
+impl Universe {
+    //get the dead and alive alues of the universe
+    pub fn get_cells(&self) -> &[Cell] {
+        &self.cells
+    }
+
+    //set cells to be alive in a universe by passing the row and column of each cell as an array
+    pub fn set_cells(&mut self, cells: &[(u32, u32)]) {
+        for (row, col) in cells.iter().cloned() {
+            let idx = self.get_index(row, col);
+            self.cells[idx] = Cell::Alive;
+        }
     }
 }
 
@@ -125,5 +230,14 @@ impl Universe {
 
     pub fn cells(&self) -> *const Cell {
         self.cells.as_ptr()
+    }
+}
+
+impl Cell {
+    fn toggle(&mut self) {
+        *self = match *self {
+            Cell::Dead => Cell::Alive,
+            Cell::Alive => Cell::Dead,
+        };
     }
 }
