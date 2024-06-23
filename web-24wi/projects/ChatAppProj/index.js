@@ -57,6 +57,7 @@ io.on('connection',(socket) => {
             socket.emit('privateChatError', `User ${recipient} not found.`);
         }
     })
+    
     socket.on('joinRoom',(roomName) =>{
         if(currentRoom){
             socket.leave(currentRoom);
@@ -70,6 +71,7 @@ io.on('connection',(socket) => {
             socket.emit('messageHistory', messageHistory);
         }
     })
+
     socket.on('chatMessage', (message) => {
         console.log("currentRoom: ", currentRoom, "Recipient: ",recipient);
 

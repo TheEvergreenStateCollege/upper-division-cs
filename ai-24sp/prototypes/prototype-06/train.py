@@ -39,7 +39,7 @@ from network import Network
 nn = Network([784, 100, 10])
 nn.SGD(
     training_data=training_data,
-    epochs=1,
+    epochs=10,
     mini_batch_size=1,
     eta=0.2,
     test_data=test_data
